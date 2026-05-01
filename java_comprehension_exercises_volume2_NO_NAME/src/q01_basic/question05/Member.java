@@ -1,6 +1,6 @@
-package q01_basic.question04;
+package q01_basic.question05;
 
-class Member {
+class Member extends AbstMember {
 	private int id;
 	private String password;
 	private String name;
@@ -38,6 +38,7 @@ class Member {
 	/**
 	 * @return name
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -45,6 +46,7 @@ class Member {
 	/**
 	 * @param name セットする name
 	 */
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -77,12 +79,14 @@ class Member {
 		this.rank = rank;
 	}
 
+	//引数なしコンストラクタ
 	public Member() {
 
 	}
 
+	//引数ありコンストラクタ
 	public Member(int id, String password, String name, int age, int rank) {
-		this.id = id;
+		this.id = id;//このフィールドのIDに引数で受け取ったidを代入する
 		this.password = password;
 		this.name = name;
 		this.age = age;
@@ -90,6 +94,13 @@ class Member {
 
 	}
 
+	@Override //AbustMemberクラスのbuyItemをオーバーライド（再定義）
+	public void buyItem() {
+		System.out.println(name + "purchased the item at 50% off");//メンバーは50％offで購入
+
+	}
+
+	@Override //AbustMemberクラスのbuyItemをオーバーライド（再定義）
 	public void showMember() {
 		System.out.println("***MEMBER DATA***");
 		System.out.println("password:" + id);
